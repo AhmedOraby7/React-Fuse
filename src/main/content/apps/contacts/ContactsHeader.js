@@ -12,6 +12,9 @@ const styles = theme => ({
 });
 
 class ContactsHeader extends Component {
+    searchByKey(){
+
+    }
 
     render()
     {
@@ -55,6 +58,25 @@ class ContactsHeader extends Component {
                                 'aria-label': 'Search'
                             }}
                             onChange={setSearchText}
+                        />
+                    </FuseAnimate>
+                </div>
+                <div className="flex items-center">
+
+                    <FuseAnimate animation="transition.expandIn" delay={300}>
+                        <Icon color="action">search</Icon>
+                    </FuseAnimate>
+
+                    <FuseAnimate animation="transition.slideLeftIn" delay={300}>
+                        <TextField
+                            placeholder="Get Your Items"
+                            className="pl-16"
+                            fullWidth
+                            value={searchText}
+                            inputProps={{
+                                'aria-label': 'Search'
+                            }}
+                            onChange={this.searchByKey}
                         />
                     </FuseAnimate>
                 </div>

@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {FuseUtils, FuseAnimate} from '@fuse';
-import {Avatar, Checkbox, Icon, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Typography} from '@material-ui/core';
+import {Avatar, Checkbox, Icon, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Typography,TextField} from '@material-ui/core';
 import {bindActionCreators} from 'redux';
 import * as Actions from './store/actions';
 import ReactTable from "react-table";
@@ -44,6 +44,10 @@ class ContactsList extends Component {
         this.setState({selectedContactsMenu: null});
     };
 
+    setSearchText= () => {
+
+    }
+
     render()
     {
         const {classes, contacts, user, searchText, selectedContactIds, selectAllContacts, deSelectAllContacts, toggleInSelectedContacts, openEditContactDialog, removeContacts, removeContact, toggleStarredContact, setContactsUnstarred, setContactsStarred} = this.props;
@@ -63,6 +67,7 @@ class ContactsList extends Component {
 
         return (
             <FuseAnimate animation="transition.slideUpIn" delay={300}>
+
                 <ReactTable
                     className={classNames(classes.root, "-striped -highlight")}
                     getTrProps={(state, rowInfo, column) => {
@@ -172,34 +177,34 @@ class ContactsList extends Component {
                         },
                         {
                             Header    : "First Name",
-                            accessor  : "name",
+                            accessor  : "brand",
                             filterable: true,
                             className : "font-bold"
                         },
                         {
                             Header    : "Last Name",
-                            accessor  : "lastName",
+                            accessor  : "cost",
                             filterable: true,
                             className : "font-bold"
                         },
                         {
                             Header    : "Company",
-                            accessor  : "company",
+                            accessor  : "upc",
                             filterable: true
                         },
                         {
                             Header    : "Job Title",
-                            accessor  : "jobTitle",
+                            accessor  : "title_arab",
                             filterable: true
                         },
                         {
                             Header    : "Email",
-                            accessor  : "email",
+                            accessor  : "title_engl",
                             filterable: true
                         },
                         {
                             Header    : "Phone",
-                            accessor  : "phone",
+                            accessor  : "price",
                             filterable: true
                         },
                         {
@@ -235,6 +240,7 @@ class ContactsList extends Component {
                     noDataText="No contacts found"
                 />
             </FuseAnimate>
+
         );
     }
 }
@@ -261,6 +267,7 @@ function mapDispatchToProps(dispatch)
 function mapStateToProps({contactsApp})
 {
     console.log("From ContactListComponent", contactsApp.contacts.entities.results);
+    console.log("Test", contactsApp.contacts.entities);
     return {
         contacts          : contactsApp.contacts.entities,
         selectedContactIds: contactsApp.contacts.selectedContactIds,

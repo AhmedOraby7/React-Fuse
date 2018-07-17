@@ -22,7 +22,7 @@ const contactsReducer = function (state = initialState, action) {
         {
             return {
                 ...state,
-                entities   : action.payload,
+                entities   : _.keyBy(action.payload.results, 'objectID'),
                 routeParams: action.routeParams
             };
         }
