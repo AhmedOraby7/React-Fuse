@@ -45,7 +45,7 @@ export function getContacts(routeParams)
 
     return (dispatch) => {
         index.search("Cheese", (err, content) => {
-            console.log(content.hits);
+            console.log("From Contacts Action",content.hits);
             dispatch({
                 type: GET_CONTACTS,
                 payload: { results: content.hits }

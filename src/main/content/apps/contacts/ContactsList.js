@@ -260,6 +260,7 @@ function mapDispatchToProps(dispatch)
 
 function mapStateToProps({contactsApp})
 {
+    console.log("From ContactListComponent", contactsApp.contacts.entities.results);
     return {
         contacts          : contactsApp.contacts.entities,
         selectedContactIds: contactsApp.contacts.selectedContactIds,
