@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {FuseUtils, FuseAnimate} from '@fuse';
-import {Avatar, Checkbox, Icon, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Typography,TextField} from '@material-ui/core';
+import {Avatar, Checkbox, Icon, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Typography} from '@material-ui/core';
 import {bindActionCreators} from 'redux';
 import * as Actions from './store/actions';
 import ReactTable from "react-table";
@@ -44,9 +44,6 @@ class ContactsList extends Component {
         this.setState({selectedContactsMenu: null});
     };
 
-    setSearchText= () => {
-
-    }
 
     render()
     {
@@ -176,34 +173,34 @@ class ContactsList extends Component {
                             sortable : false
                         },
                         {
-                            Header    : "First Name",
+                            Header    : "Brand",
                             accessor  : "brand",
                             filterable: true,
                             className : "font-bold"
                         },
                         {
-                            Header    : "Last Name",
+                            Header    : "Cost",
                             accessor  : "cost",
                             filterable: true,
                             className : "font-bold"
                         },
                         {
-                            Header    : "Company",
+                            Header    : "UPC",
                             accessor  : "upc",
                             filterable: true
                         },
                         {
-                            Header    : "Job Title",
+                            Header    : "Arabic Title",
                             accessor  : "title_arab",
                             filterable: true
                         },
                         {
-                            Header    : "Email",
+                            Header    : "English Title",
                             accessor  : "title_engl",
                             filterable: true
                         },
                         {
-                            Header    : "Phone",
+                            Header    : "Price",
                             accessor  : "price",
                             filterable: true
                         },
@@ -266,8 +263,7 @@ function mapDispatchToProps(dispatch)
 
 function mapStateToProps({contactsApp})
 {
-    console.log("From ContactListComponent", contactsApp.contacts.entities.results);
-    console.log("Test", contactsApp.contacts.entities);
+    console.log("User",contactsApp.user);
     return {
         contacts          : contactsApp.contacts.entities,
         selectedContactIds: contactsApp.contacts.selectedContactIds,

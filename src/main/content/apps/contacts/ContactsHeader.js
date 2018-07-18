@@ -12,8 +12,15 @@ const styles = theme => ({
 });
 
 class ContactsHeader extends Component {
-    searchByKey(){
-
+    state = {
+        searchKey: ''
+    };
+    searchByKey(event){
+        const val = event.target.value;
+        this.setState({
+            searchKey: val
+        });
+        this.props.getContacts(val);
     }
 
     render()
@@ -50,33 +57,14 @@ class ContactsHeader extends Component {
 
                     <FuseAnimate animation="transition.slideLeftIn" delay={300}>
                         <TextField
-                            placeholder="Search for anything"
-                            className="pl-16"
-                            fullWidth
-                            value={searchText}
-                            inputProps={{
-                                'aria-label': 'Search'
-                            }}
-                            onChange={setSearchText}
-                        />
-                    </FuseAnimate>
-                </div>
-                <div className="flex items-center">
-
-                    <FuseAnimate animation="transition.expandIn" delay={300}>
-                        <Icon color="action">search</Icon>
-                    </FuseAnimate>
-
-                    <FuseAnimate animation="transition.slideLeftIn" delay={300}>
-                        <TextField
                             placeholder="Get Your Items"
                             className="pl-16"
                             fullWidth
-                            value={searchText}
+                            value={this.state.searchKey}
                             inputProps={{
                                 'aria-label': 'Search'
                             }}
-                            onChange={this.searchByKey}
+                            onChange={this.searchByKey.bind(this)}
                         />
                     </FuseAnimate>
                 </div>
@@ -89,7 +77,8 @@ class ContactsHeader extends Component {
 function mapDispatchToProps(dispatch)
 {
     return bindActionCreators({
-        setSearchText: Actions.setSearchText
+        setSearchText: Actions.setSearchText,
+        getContacts: Actions.getContacts
     }, dispatch);
 }
 

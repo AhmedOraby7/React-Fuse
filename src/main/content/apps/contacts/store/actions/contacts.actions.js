@@ -27,7 +27,7 @@ const algoliaSearchAppKey = 'XGGBUZ5OGH';
 var client = algoliaSearch(algoliaSearchAppKey, algoliaSearchApiKey);
 var index = client.initIndex('asdekaa_sidigaber');
 
-export function getContacts(routeParams)
+export function getContacts(searchKey)
 {
     // const request = axios.get('/api/contacts-app/contacts', {
     //     params: routeParams
@@ -44,7 +44,7 @@ export function getContacts(routeParams)
     //     );
 
     return (dispatch) => {
-        index.search("Cheese", (err, content) => {
+        index.search(searchKey, (err, content) => {
             console.log("From Contacts Action",content.hits);
             dispatch({
                 type: GET_CONTACTS,
